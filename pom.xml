@@ -14,19 +14,26 @@
 		<finalName>jasper-test</finalName>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>my</id>
+			<url>file://${project.basedir}/repo</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 	
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports-fonts</artifactId>
-		    <version>4.0.0</version>
+		    <version>4.7.1</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
 		    <!-- from version 4.5.1 to 4.7.1 doesn't work -->
-		    <version>4.5.1</version>
+		    <version>4.7.1</version>
 		</dependency>
 
 		<dependency>
