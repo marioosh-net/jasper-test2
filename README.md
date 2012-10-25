@@ -6,4 +6,4 @@ Usage
 cd jasper-test2
 mvn test</pre>
 
-Output **test.pdf** will be generated in temporary folder (path will be printed in stdout).
+Output file **test.pdf** will be generated in temporary folder (path will be printed in stdout).
