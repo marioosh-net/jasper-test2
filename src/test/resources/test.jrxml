@@ -3,12 +3,24 @@
 	<field name="t8" class="java.lang.String">
 		<fieldDescription><![CDATA[t8]]></fieldDescription>
 	</field>
+    <field name="t5" class="java.lang.String">
+        <fieldDescription><![CDATA[t5]]></fieldDescription>
+    </field>
 	<detail>
 		<band height="152">
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="0" width="444" height="10" isRemoveLineWhenBlank="true"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{t8}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="4" y="10" width="440" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{t5} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<pre>"+$F{t5}+"</pre>"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

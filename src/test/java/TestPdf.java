@@ -15,6 +15,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import net.sf.jasperreports.engine.export.JRExportProgressMonitor;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
 import net.sf.jasperreports.engine.fill.JRSwapFileVirtualizer;
 import net.sf.jasperreports.engine.util.JRSwapFile;
 import org.apache.log4j.Logger;
@@ -38,6 +39,7 @@ public class TestPdf {
 			parameters.put(JRParameter.REPORT_VIRTUALIZER, virtualizer);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 			JRPdfExporter exporter = new JRPdfExporter();
+			exporter.setParameter(JRPdfExporterParameter.FORCE_LINEBREAK_POLICY, true);
 			exporter.setParameter(JRExporterParameter.PROGRESS_MONITOR, new JRExportProgressMonitor() {
 				int count;
 				@Override
