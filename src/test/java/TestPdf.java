@@ -17,6 +17,7 @@ import net.sf.jasperreports.engine.export.JRExportProgressMonitor;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
 import net.sf.jasperreports.engine.fill.JRSwapFileVirtualizer;
+import net.sf.jasperreports.engine.util.JRProperties;
 import net.sf.jasperreports.engine.util.JRSwapFile;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -29,6 +30,9 @@ public class TestPdf {
 	
 	@Test
 	public void jasper() throws SQLException, ParseException, JRException, FileNotFoundException {
+		for(JRProperties.PropertySuffix x : JRProperties.getProperties("")) {
+			log.info(x.getKey() + " = " + x.getValue());
+		}
 		JRSwapFileVirtualizer virtualizer = null;
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(TestPdf.class.getClassLoader().getResourceAsStream("test.jrxml"));
@@ -40,6 +44,7 @@ public class TestPdf {
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 			JRPdfExporter exporter = new JRPdfExporter();
 			exporter.setParameter(JRPdfExporterParameter.FORCE_LINEBREAK_POLICY, true);
+			// exporter.setProperty(JRPdfExporterParameter.PROPERTY_FORCE_LINEBREAK_POLICY, Boolean.TRUE);
 			exporter.setParameter(JRExporterParameter.PROGRESS_MONITOR, new JRExportProgressMonitor() {
 				int count;
 				@Override
